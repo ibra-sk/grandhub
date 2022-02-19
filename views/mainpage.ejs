@@ -1,0 +1,360 @@
+<%- include('./partial/header', {page: 'main'}); -%>
+
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+            <div>
+                <h4 class="mb-3 mb-md-0">Dashboard</h4>
+            </div>
+            <div class="d-flex align-items-center flex-wrap text-nowrap">
+                <div class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex" id="dashboardDate">
+                    <span class="input-group-addon bg-transparent"><i data-feather="calendar" class=" text-primary"></i></span>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-xl-12 stretch-card">
+                <div class="row flex-grow">
+                    <div class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <h6 class="card-title mb-0">New Customers</h6>
+                                <div class="dropdown mb-2">
+                                <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-md-12 col-xl-5">
+                                <h3 class="mb-2" id="customerstat">0</h3>
+                                <div class="d-flex align-items-baseline">
+                                    
+                                </div>
+                                </div>
+                                <div class="col-6 col-md-12 col-xl-7">
+                                <div id="apexChart1" class="mt-md-3 mt-xl-0"></div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+    <div class="col-md-4 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+        <div class="d-flex justify-content-between align-items-baseline">
+            <h6 class="card-title mb-0">New Orders</h6>
+            <div class="dropdown mb-2">
+            <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-12 col-xl-5">
+            <h3 class="mb-2" id="orderstat">0</h3>
+            <div class="d-flex align-items-baseline">
+                
+            </div>
+            </div>
+            <div class="col-6 col-md-12 col-xl-7">
+            <div id="apexChart2" class="mt-md-3 mt-xl-0"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-4 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+        <div class="d-flex justify-content-between align-items-baseline">
+            <h6 class="card-title mb-0">Growth</h6>
+            <div class="dropdown mb-2">
+            <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-12 col-xl-5">
+            <h3 class="mb-2" id="growthstat">0%</h3>
+            <div class="d-flex align-items-baseline">
+                
+            </div>
+            </div>
+            <div class="col-6 col-md-12 col-xl-7">
+            <div id="apexChart3" class="mt-md-3 mt-xl-0"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div> <!-- row -->
+
+<div class="row">
+<div class="col-12 col-xl-12 grid-margin stretch-card">
+<div class="card overflow-hidden">
+    <div class="card-body">
+    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+        <h6 class="card-title mb-0">Revenue</h6>
+        <div class="dropdown">
+        </div>
+    </div>
+    <div class="row align-items-start mb-2">
+        <div class="col-md-7">
+        <p class="text-muted tx-13 mb-3 mb-md-0">Revenue is the income that a business has from its normal business activities, usually from the sale of goods and services to customers.</p>
+        </div>
+        <div class="col-md-5 d-flex justify-content-md-end">
+        <div class="btn-group mb-3 mb-md-0" role="group" aria-label="Basic example">
+            <button type="button" id="daily_stat" class="btn btn-outline-primary">Daily</button>
+            <button type="button" id="monthly_stat" class="btn btn-primary">Monthly</button>
+            <button type="button" id="yearly_stat" class="btn btn-outline-primary">Yearly</button>
+        </div>
+        </div>
+    </div>
+    <div class="flot-wrapper">
+        <div id="flotChart1" class="flot-chart"></div>
+    </div>
+    </div>
+</div>
+</div>
+</div> <!-- row -->
+
+</div>
+
+<%- include('./partial/footer'); -%>
+
+<script src="http://127.0.0.1:4000/js/makeChart.js" defer></script>
+<script defer>
+GetRevenue('monthly');
+
+$('#daily_stat').on('click', function() {
+    $('#daily_stat').removeClass('btn-outline-primary');
+    $('#daily_stat').addClass('btn-primary');
+    $('#monthly_stat').removeClass('btn-primary');
+    $('#monthly_stat').addClass('btn-outline-primary');
+    $('#yearly_stat').removeClass('btn-primary');
+    $('#yearly_stat').addClass('btn-outline-primary');
+    GetRevenue('daily');
+})
+
+$('#monthly_stat').on('click', function() {
+    $('#monthly_stat').removeClass('btn-outline-primary');
+    $('#monthly_stat').addClass('btn-primary');
+    $('#daily_stat').removeClass('btn-primary');
+    $('#daily_stat').addClass('btn-outline-primary');
+    $('#yearly_stat').removeClass('btn-primary');
+    $('#yearly_stat').addClass('btn-outline-primary');
+    GetRevenue('monthly');
+})
+
+$('#yearly_stat').on('click', function() {
+    $('#yearly_stat').removeClass('btn-outline-primary');
+    $('#yearly_stat').addClass('btn-primary');
+    $('#monthly_stat').removeClass('btn-primary');
+    $('#monthly_stat').addClass('btn-outline-primary');
+    $('#daily_stat').removeClass('btn-primary');
+    $('#daily_stat').addClass('btn-outline-primary');
+    GetRevenue('yearly');
+})
+
+$('#dashboardDate').datepicker().on('changeDate', function(e) {
+    var myDate = $('#dashboardDate').datepicker('getDate');
+    var DateVal = new Date(myDate);
+    var DateNow = DateVal.getFullYear() + "-"+ (DateVal.getMonth()+1) +"-"+DateVal.getDate();
+    GetCustomerStat(DateNow);
+    GetOrderStat(DateNow);
+    GetGrowth(DateNow);
+});
+
+function GetCustomerStat(date){   
+    const customerstat = document.getElementById('customerstat'); 
+    $.ajax({
+        type:"get",
+        url:"http://127.0.0.1:4000/api/members/stat/" + date,
+        contentType: 'application/json'
+    })
+    .done(function(response){
+        //console.log("Response of update: ",response);
+        const result = response;
+        const countCustomer = result[result.length-1]['COUNT'];
+        customerstat.innerText = countCustomer;
+        const dataPoint = [];
+        result.forEach(resp => {
+            dataPoint.push(resp['COUNT']);
+        });
+        //CustomerChart([3844, 3855, 3841, 3867, 3822, 3843, 3821]);
+        console.log(dataPoint);
+        CustomerChart(dataPoint);
+    })
+    .fail(function(xhr, textStatus, errorThrown){
+            console.log("ERROR: ",xhr.responseText);
+            return xhr.responseText;
+    });
+}
+
+function GetOrderStat(date){
+    const orderstat = document.getElementById('orderstat');
+    $.ajax({
+        type:"get",
+        url:"http://127.0.0.1:4000/api/order/stat/" + date,
+        contentType: 'application/json'
+    })
+    .done(function(response){
+        //console.log("Response of update: ",response);
+        const result = response;
+        const countOrder = result[result.length-1]['COUNT'];
+        orderstat.innerText = countOrder;
+        const dataPoint = [];
+        result.forEach(resp => {
+            dataPoint.push(resp['COUNT']);
+        });
+        console.log(dataPoint);
+        OrderChart(dataPoint);        
+    })
+    .fail(function(xhr, textStatus, errorThrown){
+            console.log("ERROR: ",xhr.responseText);
+            return xhr.responseText;
+    });
+}
+
+    
+function GetGrowth(date){
+    const growthstat = document.getElementById('growthstat');
+    $.ajax({
+        type:"get",
+        url:"http://127.0.0.1:4000/api/order/growth/" + date,
+        contentType: 'application/json'
+    })
+    .done(function(response){
+        //console.log("Response of update: ",response);
+        const result = response;
+        const countGrowth = result[result.length-1]['COUNT'];
+        growthstat.innerText = countGrowth;
+        const dataPoint = [];
+        result.forEach(resp => {
+            dataPoint.push(resp['COUNT']);
+        });
+        console.log(dataPoint);
+        GrowthChart(dataPoint);
+    })
+    .fail(function(xhr, textStatus, errorThrown){
+            console.log("ERROR: ",xhr.responseText);
+            return xhr.responseText;
+    });
+}
+
+function GetRevenue(date){
+    $.ajax({
+        type:"get",
+        url:"http://127.0.0.1:4000/api/order/sales/" + date,
+        contentType: 'application/json'
+    })
+    .done(function(response){
+        //console.log("Response of update: ",response);
+        const result = response;
+        if(date == "daily"){
+            var timeline = [
+            [1, "1"],
+            [2, "2"],
+            [3, "3"],
+            [4, "4"],
+            [5, "5"],
+            [6, "6"],
+            [7, "7"],
+            [8, "8"],            
+            [9, "9"],            
+            [10, "10"],
+            [11, "11"],
+            [12, "12"],
+            [13, "13"],
+            [14, "14"],
+            [15, "15"],
+            [16, "16"],
+            [17, "17"],
+            [18, "18"],
+            [19, "19"],
+            [20, "20"],
+            [21, "21"],
+            [22, "22"],
+            [23, "23"],
+            [24, "24"],
+            [25, "25"],
+            [26, "26"],
+            [27, "27"],
+            [28, "28"],
+            [29, "29"],
+            [30, "30"],
+            [31, "31"],
+            ];
+        }
+        if(date == "monthly"){
+            var timeline = [
+            [1, "Jan"],
+            [2, "Feb"],
+            [3, "Mar"],
+            [4, "Apr"],
+            [5, "May"],
+            [6, "Jun"],
+            [7, "Jul"],
+            [8, "Aug"],            
+            [9, "Sep"],            
+            [10, "Oct"],
+            [11, "Nov"],
+            [12, "Dec"],
+            ];
+        }
+        if(date == "yearly"){
+            var timeline = [
+            [1, "2020"],
+            [2, "2021"],
+            [3, "2022"],
+            [4, "2023"],
+            [5, "2024"],
+            [6, "2025"],
+            [7, "2026"],
+            [8, "2027"],            
+            [9, "2028"],            
+            [10, "2029"],
+            [11, "2030"],
+            ];
+        }
+        
+        var arrPoint = [];
+        result.forEach(resp => {
+            var calPoint = (resp['Total'] * 75) / 1500000;
+            if(date == "daily"){
+                var onePoint = [resp['Day'], calPoint];
+            }
+            if(date == "monthly"){
+                var onePoint = [resp['Month'], calPoint];
+            }
+            if(date == "yearly"){
+                var onePoint = [resp['Year'], calPoint];
+            }            
+            arrPoint.push(onePoint);
+        });
+        //console.log(arrPoint);
+        RevenueChart(arrPoint, timeline);
+    })
+    .fail(function(xhr, textStatus, errorThrown){
+            console.log("ERROR: ",xhr.responseText);
+            return xhr.responseText;
+    });
+}
+
+
+</script>		
+</body>
+</html>    

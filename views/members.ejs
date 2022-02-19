@@ -1,0 +1,109 @@
+<%- include('./partial/header', {page: 'member'}); -%>
+
+<div class="page-wrapper">
+
+    <div class="page-content">
+
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+  <div>
+    <h4 class="mb-3 mb-md-0">Members Overview</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-xl-12 stretch-card">
+    <div class="row flex-grow">
+      <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h6 class="card-title mb-0">Total Registered Users</h6>
+              <div class="dropdown mb-2">
+                <button class="btn p-0" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-lg text-muted pb-3px" data-feather=""></i>
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2"><%= totalmembers %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h6 class="card-title mb-0">Estimated Unregistered Users</h6>
+              <div class="dropdown mb-2">
+                <button class="btn p-0" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-lg text-muted pb-3px" data-feather=""></i>
+                </button>                        
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2"><%= totalguests %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- row -->
+
+<nav class="page-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Members</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="cover-body d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="card-title">Registered Users</h6>
+          </div>
+        </div>              
+        <div class="table-responsive">
+          <table id="dataTableExample" class="table">
+            <thead>
+              <tr>
+                <th>FullName</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Location</th>
+                <th>Address</th>
+                <th>BirthDate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% data.forEach(function(product) { %>
+                <tr>
+                    <td><a href="members/info/<%= product.mid %>"><%= product.fullname %></a></td>
+                    <td><%= product.email %></td>
+                    <td>+256 <%= product.phone_number %></td>
+                    <td><%= product.location %></td>
+                    <td><%= product.address %></td>
+                    <td><%= product.birthdate.toString().substring(0, 16) %></td>
+                </tr>
+            <% }); %>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div> <!-- Table End -->
+</div>
+
+<%- include('./partial/footer'); -%>
+</body>
+</html>

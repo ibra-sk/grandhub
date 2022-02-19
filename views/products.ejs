@@ -1,0 +1,135 @@
+<%- include('./partial/header', {page: 'product'}); -%>
+
+<div class="page-wrapper">
+
+    <div class="page-content">
+
+<div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+  <div>
+    <h4 class="mb-3 mb-md-0">Products Overall</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-xl-12 stretch-card">
+    <div class="row flex-grow">
+      <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h6 class="card-title mb-0">Number of Products</h6>
+              <div class="dropdown mb-2">
+                <button class="btn p-0" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-lg text-muted pb-3px" data-feather=""></i>
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2"><%= totalprd %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h6 class="card-title mb-0">Number of Categories</h6>
+              <div class="dropdown mb-2">
+                <button class="btn p-0" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-lg text-muted pb-3px" data-feather=""></i>
+                </button>                        
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-12 col-xl-5">
+                <h3 class="mb-2"><%= totalcate %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- row -->
+
+<nav class="page-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Products</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+                
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="cover-body d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="card-title">List of all Products</h6>
+          </div>
+          <div class="d-none d-md-block">
+            <a href="products/add_category" class="btn btn-primary btn-icon-text btn-edit-profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive btn-icon-prepend"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg> Add Category
+            </a>
+            <a href="products/add" class="btn btn-primary btn-icon-text btn-edit-profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit btn-icon-prepend"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Add Product
+            </a>
+          </div>
+        </div> 
+        </br>               
+        <div class="table-responsive">
+          <table id="dataTableExample" class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Information</th>
+                <th>Price</th>
+                <th>is Available?</th>
+                <th>Date Created</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% data.forEach(function(product) { %>
+                <tr>
+                  <td><%= product.Name %></td>
+                  <td><%= product.Info %></td>
+                  <td><%= product.Price %> UGX</td>
+                  <% if( product.available == 1 ) { %>
+                  <td>YES </td>
+                  <% } else { %>
+                  <td>NO </td>
+                  <% } %>                  
+                  <td><%= product.date_created.toString().substring(0, 16) %></td>
+                  <td>
+                    <div class="icons">
+                      <a href="#" class="icon" onclick="location.href='products/edit/<%= product.prd_id %>'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                      </a>
+                       | 
+                      <a href="#" class="icon" onclick="location.href='products/status/<%= product.prd_id %>/<%= product.available %>'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                      </a>
+                       | 
+                      <a href="#" class="icon" onclick="location.href='products/delete/<%= product.prd_id %>'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                      </a>                    
+                    </div>
+                    
+                  </td>
+                </tr>
+              <% }); %> 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div> <!-- Table End -->
+    </div>
+
+<%- include('./partial/footer'); -%>
+
+</body>
+</html>

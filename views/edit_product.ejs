@@ -1,0 +1,91 @@
+<%- include('./partial/header', {page: 'product'}); -%>
+<div class="page-wrapper">
+
+    <div class="page-content">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+            <div>
+                <h4 class="mb-3 mb-md-0">Create Product</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Product information</h4>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label class="col-form-label">Product Name</label>
+                                <input class="form-control" value="<%= prdData.prd_id %>" name="insertId" hidden required>
+                            </div>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="<%= prdData.Name %>" maxlength="250" name="insertName" id="defaultconfig" type="text" placeholder="Enter Name here" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label class="col-form-label">Product Price</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input class="form-control" value="<%= prdData.Price %>" maxlength="8" name="insertPrice" id="defaultconfig-2" type="number" placeholder="Set Product price here" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label class="col-form-label">Product Category</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <select class="form-control" id="exampleFormControlSelect1" name="insertCategory" required>
+                                    <option value="unnull" disabled="">Select your Category</option>
+                                    <% data.forEach(function(category) { %>
+                                        <% if( prdData.category == category.title ) { %>
+                                            <option selected=""><%= category.title %></option>
+                                        <% } else { %>
+                                            <option><%= category.title %></option>
+                                        <% } %>                                
+                                    <% }); %> 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group mb-0 row">
+                            <div class="col-lg-3">
+                                <label class="col-form-label">Product Description</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <textarea id="maxlength-textarea" name="insertDesc" class="form-control" maxlength="500" rows="8" placeholder="Description summary about the product with no more than 500 chars." required><%= prdData.Info %></textarea>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+        <h4 class="card-title">Product Image</h4>
+        <div class="item">
+          <img class="img-fluid" src="<%= prdData.thumbnail %>" alt="item-image" id="display">
+        </div>
+        <div class="form-group">
+          <input type="file" name="insertImg" class="file-upload-default" required>
+          <div class="input-group col-xs-12">
+            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+            <span class="input-group-append">
+              <button class="file-upload-browse btn btn-primary" type="button">Choose Image</button>
+            </span>
+          </div>
+        </div>
+        <hr>
+        <input class="btn btn-primary" id="done-btn" type="submit" value="Done">
+                    </div>
+                </div>
+            </div>
+        </div>	<!-- Form End -->			
+    </div>
+    </div>
+</div>
+<%- include('./partial/footer'); -%>
+<script src="http://127.0.0.1:4000/js/edittor.js"></script>
+</body>
+</html>
