@@ -2,10 +2,10 @@ const mysql = require('mysql');
 let instance = null;
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'delivrbase',
+    host: 'us-cdbr-east-05.cleardb.net',
+    user: 'b2a5fa40654afb',
+    password: '556171fa',
+    database: 'heroku_6003e04e89b9d0d',
     port: '3306'
 });
 
