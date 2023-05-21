@@ -3,6 +3,9 @@ const shortid = require('shortid');
 const bcrypt = require('bcrypt');
 const dbService = require('../dbconnect');
 const db = dbService.getDbServiceInstance();
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 
 exports.signin = (email, password, cb) => {

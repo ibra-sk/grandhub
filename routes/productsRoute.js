@@ -2,6 +2,9 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const Products = require('../components/products');
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){

@@ -2,6 +2,9 @@ const { response } = require('express');
 const Members = require('../components/members');
 const Products = require('../components/products');
 const Orders = require('../components/orders');
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 exports.mainpage = (req, res, next) => {
     res.render('mainpage');
@@ -13,7 +16,7 @@ exports.loginpage = (req, res, next) => {
 
 exports.logoutpage = (req, res, next) => {
     res.cookie("tokencookie", "", { expires: new Date() });
-    res.redirect('http://127.0.0.1:4000/dashboard');
+    res.redirect(BASE_URL+ 'dashboard');
 }
 
 exports.latest = (req, res, next) => {

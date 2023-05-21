@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 const PublicKey = "FLWPUBK-7f5b68b43dd233c5e05fcfd0d56368bb-X";
 const SecretKey = "FLWSECK-78bc22f4598a2d19f1a6c490eb1b55b4-X";

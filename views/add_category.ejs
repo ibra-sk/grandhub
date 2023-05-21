@@ -90,7 +90,7 @@ addBtn.addEventListener('click', function() {
     }else{
         $.ajax({
         type:"post",
-        url:"http://127.0.0.1:4000/api/products/category" ,
+        url:"/api/products/category" ,
         dataType: 'json',
         data: JSON.stringify({"name": TitleInput.value}),
         contentType: 'application/json'
@@ -117,7 +117,7 @@ function DeleteCategory(x) {
     }else{
         $.ajax({
         type:"post",
-        url:"http://127.0.0.1:4000/api/products/category/delete" ,
+        url:"/api/products/category/delete" ,
         dataType: 'json',
         data: JSON.stringify({"name": x}),
         contentType: 'application/json'

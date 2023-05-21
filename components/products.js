@@ -3,6 +3,9 @@ const shortid = require('shortid');
 const dbService = require('../dbconnect');
 const { response } = require('express');
 const db = dbService.getDbServiceInstance();
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 function check_prd_id(pid) {
     const result = db.queueData('SELECT * FROM products WHERE prd_id=?', [pid]);
@@ -119,7 +122,7 @@ exports.create_product = (req, res, next) => {
         var info = req.body.info;
         var price = req.body.price;
         var category = req.body.category;
-        var thumbnail = "http://192.168.137.1:4000/images/source/" + req.file.filename + ".jpg";
+        var thumbnail = BASE_URL+ "images/source/" + req.file.filename + ".jpg";
         var stock = 1;
         var date = new Date();
         const params = [pid, name, info, category, price, thumbnail, stock, date];

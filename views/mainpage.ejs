@@ -135,7 +135,7 @@
 
 <%- include('./partial/footer'); -%>
 
-<script src="http://127.0.0.1:4000/js/makeChart.js" defer></script>
+<script src="/js/makeChart.js" defer></script>
 <script defer>
 GetRevenue('monthly');
 
@@ -182,7 +182,7 @@ function GetCustomerStat(date){
     const customerstat = document.getElementById('customerstat'); 
     $.ajax({
         type:"get",
-        url:"http://127.0.0.1:4000/api/members/stat/" + date,
+        url:"/api/members/stat/" + date,
         contentType: 'application/json'
     })
     .done(function(response){
@@ -208,7 +208,7 @@ function GetOrderStat(date){
     const orderstat = document.getElementById('orderstat');
     $.ajax({
         type:"get",
-        url:"http://127.0.0.1:4000/api/order/stat/" + date,
+        url:"/api/order/stat/" + date,
         contentType: 'application/json'
     })
     .done(function(response){
@@ -234,7 +234,7 @@ function GetGrowth(date){
     const growthstat = document.getElementById('growthstat');
     $.ajax({
         type:"get",
-        url:"http://127.0.0.1:4000/api/order/growth/" + date,
+        url:"/api/order/growth/" + date,
         contentType: 'application/json'
     })
     .done(function(response){
@@ -258,7 +258,7 @@ function GetGrowth(date){
 function GetRevenue(date){
     $.ajax({
         type:"get",
-        url:"http://127.0.0.1:4000/api/order/sales/" + date,
+        url:"/api/order/sales/" + date,
         contentType: 'application/json'
     })
     .done(function(response){

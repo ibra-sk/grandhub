@@ -6,6 +6,8 @@ const memberRouter = require('./routes/membersRoute.js');
 const orderRouter = require('./routes/ordersRoute.js');
 const authRouter = require('./routes/authRoute.js');
 const dashboardRouter = require('./routes/dashboardRoute.js');
+const dotenv = require('dotenv');
+dotenv.config();
 
 //App Setup
 var app = express();

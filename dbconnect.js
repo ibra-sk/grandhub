@@ -3,14 +3,14 @@ let instance = null;
 let dbconnection;
 
 let db_config = {
-    // host: "localhost",
-    // user: "root",
-    // password: "",
-    // database: 'delivrbase',
-    host: 'us-cdbr-east-05.cleardb.net',
-    user: 'b2a5fa40654afb',
-    password: '556171fa',
-    database: 'heroku_6003e04e89b9d0d',
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: 'delivrbase',
+    //host: 'us-cdbr-east-05.cleardb.net',
+    //user: 'b2a5fa40654afb',
+    //password: '556171fa',
+    //database: 'heroku_6003e04e89b9d0d',
     connectionLimit: 50,
     queueLimit: 0,
     waitForConnection: true,

@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Dashboard = require('../components/dashboard');
 const checkAuth = require('../components/check-auth');
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 //Route Setup
 router.get('/', checkAuth,      Dashboard.mainpage);

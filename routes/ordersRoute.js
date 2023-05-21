@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const moment = require("moment");
 const Orders = require("../components/orders");
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 //Route Setup
 router.get("/", Orders.get_all_orders);

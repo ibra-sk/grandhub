@@ -5,6 +5,9 @@ const dbService = require('../dbconnect');
 const { response } = require('express');
 const e = require('express');
 const db = dbService.getDbServiceInstance();
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 exports.signin = (req, res, next) => {
     if(req.body.email == null || req.body.password == null) {

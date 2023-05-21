@@ -1,4 +1,7 @@
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 module.exports = (req, res, next) => {
     const cookies = req.headers.cookie;
@@ -9,9 +12,9 @@ module.exports = (req, res, next) => {
             req.userData = decode;
             next();
         } catch (error){
-            res.redirect('http://127.0.0.1:4000/dashboard/login?status=auth');
+            res.redirect(BASE_URL+ 'dashboard/login?status=auth');
         }
     }else{
-        res.redirect('http://127.0.0.1:4000/dashboard/login?status=auth');
+        res.redirect(BASE_URL+ 'dashboard/login?status=auth');
     }
 }
