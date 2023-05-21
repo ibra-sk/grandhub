@@ -3,10 +3,10 @@ let instance = null;
 let dbconnection;
 
 let db_config = {
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: 'delivrbase',
+	host: "d1.my-control-panel.com",
+    user: "yonisosi_food",
+    password: "123.qwe.asd.zxc.",
+    database: 'yonisosi_food',
     //host: 'us-cdbr-east-05.cleardb.net',
     //user: 'b2a5fa40654afb',
     //password: '556171fa',
