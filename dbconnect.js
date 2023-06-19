@@ -3,14 +3,10 @@ let instance = null;
 let dbconnection;
 
 let db_config = {
-	host: "d1.my-control-panel.com",
-    user: "yonisosi_food",
-    password: "123.qwe.asd.zxc.",
-    database: 'yonisosi_food',
-    //host: 'us-cdbr-east-05.cleardb.net',
-    //user: 'b2a5fa40654afb',
-    //password: '556171fa',
-    //database: 'heroku_6003e04e89b9d0d',
+	host: process.env.MYDB_HOST,
+    user: process.env.MYDB_USER,
+    password: process.env.MYDB_PASS,
+    database: process.env.MYDB_NAME,
     connectionLimit: 50,
     queueLimit: 0,
     waitForConnection: true,
@@ -32,22 +28,6 @@ let tempPool = mysql.createPool(db_config);
     });
 
 console.log("Waiting for stuff....");
-
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'delivrbase',
-//     port: '3306'
-// });
-
-// connection.connect( (err) => {
-//     if(err){
-//         //console.log(err.message);
-//         console.log('db refused connection');
-//     }
-//     console.log(`db ${connection.state}`);
-// })
 
 class DbService {
     static getDbServiceInstance() {
