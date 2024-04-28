@@ -6,7 +6,8 @@ bin-release/
 UsersWin~10AppDataRoamingnpm-cache/
 node_modules/
 .vscode/
-
+.env
+*.env
 
 # Other files and folders
 .settings/
