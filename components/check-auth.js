@@ -5,7 +5,7 @@ const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:4000/";
 
 module.exports = (req, res, next) => {
     const cookies = req.headers.cookie;
-    if(cookies.includes('tokencookie')){
+    if(cookies && cookies.includes('tokencookie')){
         var tokenKey = cookies.substr(cookies.indexOf('tokencookie=') + 12, cookies.length); 
         try {
             const decode = jwt.verify(tokenKey,"grandhub_auth@secretkey")
